@@ -6,7 +6,7 @@ const fetchSchema = require("./fetch-schema")
 const readSchema  = require("./read-schema-file")
 const composePaths = require("./compose-paths")
 
-const obtainSchema = (spec, graphUrl, schemaPath, headers) => {
+const obtainSchema = (spec, headers, graphUrl, schemaPath) => {
     if (graphUrl) {
         return fetchSchema(graphUrl, headers)
     }
