@@ -1,7 +1,10 @@
 var Handlebars = require('handlebars')
-var common = require('../lib/common')
 
 module.exports = function (value, options) {
+    if (!options.data.root.servers) {
+        return
+    }
+
     const query = value.example;
     const variables = null 
         // value.schema 

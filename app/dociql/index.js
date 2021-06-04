@@ -24,7 +24,7 @@ module.exports = function(specPath, headers, introspectionUrl, schemaFilePath) {
     const graphUrl = introspectionUrl ? introspectionUrl : spec.introspection
     const schemaPath = schemaFilePath ? schemaFilePath : spec.schema_path
 
-    const {graphQLSchema, jsonSchema} = obtainSchema(spec, graphUrl, schemaPath, headers)
+    const {graphQLSchema, jsonSchema} = obtainSchema(spec, headers, graphUrl, schemaPath)
 
     // generate specification
     const swaggerSpec = {
@@ -32,14 +32,20 @@ module.exports = function(specPath, headers, introspectionUrl, schemaFilePath) {
         info: spec.info,
         servers: spec.servers,
         externalDocs: spec.externalDocs,
-        tags: spec.domains.map(_ => ({ 
-            name: _.name, 
-            description: _.description,
-            externalDocs: _.externalDocs
-        })),
-        paths: composePaths(spec.domains, graphQLSchema),
         securityDefinitions: spec.securityDefinitions,
         definitions: jsonSchema.definitions
+    }
+
+    if (spec.domains) {
+        Object.assign(swaggerSpec, {
+            tags: spec.domains.map(_ => ({
+                name: _.name,
+                description: _.description,
+                externalDocs: _.externalDocs
+            })),
+            paths: composePaths(spec.domains, graphQLSchema),
+
+        })
     }
 
     if (graphUrl) {
