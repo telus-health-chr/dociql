@@ -1,5 +1,5 @@
 {
-  "name": "dociql",
+  "name": "@telus-health-chr/dociql",
   "version": "1.1.4",
   "description": "Generate beautiful static API documentation from GraphQL Schema",
   "preferGlobal": true,
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wayfair/dociql.git"
+    "url": "git+https://github.com/telus-health-chr/dociql.git"
   },
   "engines": {
     "node": ">=8"
@@ -30,9 +30,9 @@
   "author": "Dennis Miasoutov <dmiasoutov@wayfair.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/sourcey/dociql/issues"
+    "url": "https://github.com/telus-health-chr/dociql/issues"
   },
-  "homepage": "https://github.com/wayfair/dociql",
+  "homepage": "https://github.com/telus-health-chr/dociql",
   "dependencies": {
     "bluebird": "^3.5.2",
     "cheerio": "^1.0.0-rc.2",
